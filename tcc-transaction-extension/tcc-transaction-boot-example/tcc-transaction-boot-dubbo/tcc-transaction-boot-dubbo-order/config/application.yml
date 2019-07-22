@@ -1,0 +1,25 @@
+dubbo: 
+  #zookeeper-address: zxq:2181
+  zookeeper-address: wulinThinkPad:2181
+  application:
+    name: order
+
+spring: 
+  main: 
+    web-environment: true
+    
+server:
+  context-path: /order
+  port: 8883
+  maxThreadSize: 5000
+    
+tcc: 
+  recover: 
+    recoverDuration: 60
+  repository: 
+    tbSuffix: ord
+    type: jdbc
+  sql-script: 
+    running: false
+    
+    

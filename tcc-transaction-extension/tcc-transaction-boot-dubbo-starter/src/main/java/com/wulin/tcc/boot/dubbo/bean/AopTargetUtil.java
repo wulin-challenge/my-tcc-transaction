@@ -1,0 +1,71 @@
+package com.wulin.tcc.boot.dubbo.bean;
+
+import java.lang.reflect.Field;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.aop.framework.AdvisedSupport;
+import org.springframework.aop.framework.AopProxy;
+import org.springframework.aop.support.AopUtils;
+
+import com.wulin.tcc.boot.dubbo.TccBootDubboConfigurer;
+
+/**
+ * aop目标工具类
+ * @author wulin
+ *
+ */
+public class AopTargetUtil {
+	private static final Log logger = LogFactory.getLog(TccBootDubboConfigurer.class);
+
+   /**
+    * 获取 目标对象
+    * @param proxy 代理对象
+    * @return
+    * @throws Exception
+    */
+	public static Object getTarget(Object proxy) {
+		try {
+			if (!AopUtils.isAopProxy(proxy)) {
+				return proxy;// 不是代理对象
+			}
+
+			if (AopUtils.isJdkDynamicProxy(proxy)) {
+				return getJdkDynamicProxyTargetObject(proxy);
+			} else { // cglib
+				return getCglibProxyTargetObject(proxy);
+			}
+		} catch (Exception e) {
+			logger.error("获取代理对象失败!",e);
+		}
+		return null;
+	}
+
+
+   private static Object getCglibProxyTargetObject(Object proxy) throws Exception {
+      Field h = proxy.getClass().getDeclaredField("CGLIB$CALLBACK_0");
+      h.setAccessible(true);
+      Object dynamicAdvisedInterceptor = h.get(proxy);
+
+      Field advised = dynamicAdvisedInterceptor.getClass().getDeclaredField("advised");
+      advised.setAccessible(true);
+
+      Object target = ((AdvisedSupport)advised.get(dynamicAdvisedInterceptor)).getTargetSource().getTarget();
+
+      return target;
+   }
+
+
+   private static Object getJdkDynamicProxyTargetObject(Object proxy) throws Exception {
+      Field h = proxy.getClass().getSuperclass().getDeclaredField("h");
+      h.setAccessible(true);
+      AopProxy aopProxy = (AopProxy) h.get(proxy);
+
+      Field advised = aopProxy.getClass().getDeclaredField("advised");
+      advised.setAccessible(true);
+
+      Object target = ((AdvisedSupport)advised.get(aopProxy)).getTargetSource().getTarget();
+
+      return target;
+   }
+}

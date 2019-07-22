@@ -1,0 +1,21 @@
+dubbo: 
+  #zookeeper-address: zxq:2181
+  zookeeper-address: wulinThinkPad:2181
+  port: 50882
+  application:
+    name: redpacket
+
+spring: 
+  main: 
+    web-environment: false
+    
+tcc: 
+  recover: 
+    recoverDuration: 6000
+  repository: 
+    tbSuffix: red
+    type: jdbc
+  sql-script: 
+    running: false
+    
+    

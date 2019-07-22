@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.wulin</groupId>
+		<artifactId>tcc-transaction-boot-example</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>tcc-transaction-boot-dubbo</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+		<tcc_simple_version>1.2.4.20</tcc_simple_version>
+		<gaia_version>1.0.1-SNAPSHOT</gaia_version>
+		<hades_version>1.0.2-SNAPSHOT</hades_version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.wulin</groupId>
+				<artifactId>tcc-transaction-boot-starter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.wulin</groupId>
+				<artifactId>tcc-transaction-boot-dubbo-starter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mengyun</groupId>
+				<artifactId>tcc-transaction-dubbo</artifactId>
+				<version>${tcc_simple_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apel</groupId>
+				<artifactId>gaia-app-boot</artifactId>
+				<version>${gaia_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apel</groupId>
+				<artifactId>gaia-persist</artifactId>
+				<version>${gaia_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apel</groupId>
+				<artifactId>hades-dubbo-starter</artifactId>
+				<version>${hades_version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.wulin</groupId>
+			<artifactId>tcc-transaction-boot-starter</artifactId>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>tcc-transaction-boot-dubbo-capital-api</module>
+		<module>tcc-transaction-boot-dubbo-capital</module>
+		<module>tcc-transaction-boot-dubbo-redpacket-api</module>
+		<module>tcc-transaction-boot-dubbo-redpacket</module>
+		<module>tcc-transaction-boot-dubbo-order</module>
+	</modules>
+</project>

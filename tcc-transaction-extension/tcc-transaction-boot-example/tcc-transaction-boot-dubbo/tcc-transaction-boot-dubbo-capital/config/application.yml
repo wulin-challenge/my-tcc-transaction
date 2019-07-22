@@ -1,0 +1,21 @@
+dubbo: 
+  #zookeeper-address: zxq:2181
+  zookeeper-address: wulinThinkPad:2181
+  port: 50881
+  application:
+    name: capital
+
+spring: 
+  main: 
+    web-environment: false
+    
+tcc: 
+  recover: 
+    recoverDuration: 6000
+  repository: 
+    tbSuffix: cap
+    type: jdbc
+  sql-script: 
+    running: false
+    
+    

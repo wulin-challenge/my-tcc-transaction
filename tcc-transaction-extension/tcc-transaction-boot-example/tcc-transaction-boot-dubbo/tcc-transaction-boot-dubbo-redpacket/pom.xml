@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.wulin</groupId>
+    <artifactId>tcc-transaction-boot-dubbo</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>tcc-transaction-boot-dubbo-redpacket</artifactId>
+  
+  <dependencies>
+		<dependency>
+			<groupId>com.wulin</groupId>
+			<artifactId>tcc-transaction-boot-dubbo-redpacket-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc8</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.wulin</groupId>
+			<artifactId>tcc-transaction-boot-simple-redpacket</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apel</groupId>
+			<artifactId>gaia-app-boot</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mengyun</groupId>
+			<artifactId>tcc-transaction-dubbo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.wulin</groupId>
+			<artifactId>tcc-transaction-boot-dubbo-starter</artifactId>
+		</dependency>
+	</dependencies>
+</project>
