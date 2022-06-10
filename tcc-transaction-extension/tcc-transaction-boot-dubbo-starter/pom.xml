@@ -10,7 +10,7 @@
 	<artifactId>tcc-transaction-boot-dubbo-starter</artifactId>
 	
 	<properties>
-		<dubbo_version>2.5.6</dubbo_version>
+		<dubbo_version>2.6.12</dubbo_version>
 	</properties>
 
 	<dependencies>
